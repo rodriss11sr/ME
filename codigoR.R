@@ -1,16 +1,18 @@
-## Alexandro Fernandez Boreisha, Jaime Millan IbaÃ±ez Archilla y Rodrigo Sosa Saez
+## Jaime Millan Ibañez Archilla
+## Rodrigo Sosa Saez
+## Alexandro Fernandez Boreisha
 
 ## Abrir el archivo 
 library(readx1)
 datos <- read_excel("viviendasChamberi.csv")
-##Sacamos una muestra de poblaciÃ³n de 100 individuos de los que
-## conocemos el precio y el numero de habitaciones de su inmueble en la zona de ChamberÃ­ 
+##Sacamos una muestra de población de 100 individuos de los que
+## conocemos el precio y el numero de habitaciones de su inmueble en la zona de Chamberí 
 ## y queremos observar, cual supera las expectativas, es decir, la media, y cual no,
 ## dado un nivel de confianza del 95% 
 
 ##Hacemos un resumen del archivo de datos
 summary(viviendasChamberi)
-zAlphaMedio <- 1.96 ## este dato lo sacamos de la tabla, al ser 95%, si quisieramos cambiarl solo habrÃ­a que modificar el valor
+zAlphaMedio <- 1.96 ## este dato lo sacamos de la tabla, al ser 95%, si quisieramos cambiarl solo habría que modificar el valor
 
 
 ##Sacamos una muestra de 100 pisos, de precio. 
@@ -37,11 +39,11 @@ mediaHabitaciones <- mean(unlist(muestraHabitaciones))
 #Mostramos
 mediaHabitaciones
 
-##Calculamos la desviaciÃ³n tipica del precio 
+##Calculamos la desviación tipica del precio 
 desviacionPrecio <- sd(unlist(muestraPrecio))
 #Mostramos
 desviacionPrecio
-##Calculamos la desviaciÃ³n tipica del numero de habitaciones
+##Calculamos la desviación tipica del numero de habitaciones
 desviacionHabitaciones <- sd(unlist(muestraHabitaciones))
 #Mostramos
 desviacionHabitaciones
@@ -77,7 +79,7 @@ limiteSuperiorHabitacion <- mediaHabitaciones + (zAlphaMedio * errorHabitacion)
 limiteSuperiorHabitacion
 
 ##Vamos a crear el intervalo una vez calculados los limites
-## Podremos observar despuÃ©s, los datos que queremos contrastar del enunciado
+## Podremos observar después, los datos que queremos contrastar del enunciado
 intervaloPrecio <- data.frame(n,mediaPrecio,desviacionPrecio,zAlphaMedio,errorPrecio,limiteInferiorPrecio,limiteSuperiorPrecio)
 
 ##Mostramos
@@ -90,20 +92,20 @@ intervaloHabitacion <- data.frame(n,mediaHabitaciones,desviacionHabitaciones,zAl
 intervaloHabitacion 
 
 ##Consideramos una vez obtenidos los resultados
-## que los pisos por debajo del limite inferior del intervalo del precio, se situan aÃºn asÃ­ cerca de la media. 
-## .AdemÃ¡s, podemos afirmar por el intervalo de las habitaciones
+## que los pisos por debajo del limite inferior del intervalo del precio, se situan aún así cerca de la media. 
+## .Además, podemos afirmar por el intervalo de las habitaciones
 ## que estos contaran solo con 1 o menos cuartos. Por otra parte, 
 ## los pisos que superan el limite superior del intervalo del precio
-## contarÃ¡n con 2 habitaciones. Por lo que se puede afirmar, que por lo general 
-## los pisos analizados de ChamberÃ­ contarÃ¡n la mayorÃ­a con 1 cuarto y la mayorÃ­a, 
-## no superarÃ¡n los 1300 euros, situandose muy cercanos a la media. 
+## contarán con 2 habitaciones. Por lo que se puede afirmar, que por lo general 
+## los pisos analizados de Chamberí contarán la mayoría con 1 cuarto y la mayoría, 
+## no superarán los 1300 euros, situandose muy cercanos a la media. 
 
-## Por tanto, observamos de forma general, que no va a haber una gran variaciÃ³n
+## Por tanto, observamos de forma general, que no va a haber una gran variación
 ## respecto a la media en ninguno de los 2 casos.
 
 
 ## Ahora, realizaremos un analisis similar, pero con la superficie de los inmuebles.
-## Para ello contaremos con un nivel de confianza del 95 % tambiÃ©n y con un tamaÃ±o 
+## Para ello contaremos con un nivel de confianza del 95 % también y con un tamaño 
 ## muestra de 100. 
 
 ##Sacamos una muestra de 100 pisos, de superficie.
@@ -116,7 +118,7 @@ mediaSuperficie <- mean(unlist(muestraSuperficie))
 ##Mostramos
 mediaSuperficie
 
-##Calculamos la desviaciÃ³n tÃ­pica de la superficie
+##Calculamos la desviación típica de la superficie
 desviacionSuperficie <- sd(unlist(muestraSuperficie))
 ##Mostramos
 desviacionSuperficie
@@ -142,32 +144,32 @@ intervaloSuperficie <- data.frame(n,mediaSuperficie,desviacionSuperficie,zAlphaM
 intervaloSuperficie
 
 ## Tras realizar el analisis en la variable superficie, observamos que todos los pisos
-## tienen un tamaÃ±o estandar, es decir, todos los habitaculos van a tener practicamente la misma superficie
+## tienen un tamaño estandar, es decir, todos los habitaculos van a tener practicamente la misma superficie
 ## teniendo una diferencia entre ellos de aproximadamente de 7 m^2, lo que nos asegura
 ## que no se vaya a contar con otra habitacion, pero si, que haya una diferencia entre ellas
-## en cuanto a amplitud. Todo ello, estando muy relacionado con la variaciÃ³n en el precio
-## y con el hecho de que la mayorÃ­a de pisos cuenten con 1 solo cuarto. 
-## AdemÃ¡s, al igual que en los otros casos observamos que los limite se encuentran muy cercanos  a la media
-## habiendo aÃºn asÃ­ mayores diferencias. 
+## en cuanto a amplitud. Todo ello, estando muy relacionado con la variación en el precio
+## y con el hecho de que la mayoría de pisos cuenten con 1 solo cuarto. 
+## Además, al igual que en los otros casos observamos que los limite se encuentran muy cercanos  a la media
+## habiendo aún así mayores diferencias. 
 
 
 ## Vamos a realizar ahora un contraste de hipotesis, relacionadas con la superficie.
 ## Y vamos a valorarla respecto a la media, utilizando un nivel de significacion
 ## del 5%.
-## La inmobiliaria quiere asegurar que la superficie de los pisos serÃ¡ mayor o igual a
+## La inmobiliaria quiere asegurar que la superficie de los pisos será mayor o igual a
 ## 61 m^2, y, para ello vamos a utilizar el siguiente contraste de hipotesis: 
 
 ## La hipotesis nula -> H0 : mu >= 61
 ## La hipotesis alternativa -> H1 : mu < 61 
 
-## Como nuestro tamaÃ±o muestral n = 100 >> 30; utilizaremos una aproximaciÃ³n 
+## Como nuestro tamaño muestral n = 100 >> 30; utilizaremos una aproximación 
 ## a la Normal. 
 
-## A continuaciÃ³n, como la desviaciÃ³n tipica es conocida, utilizaremos la siguiente formula
+## A continuación, como la desviación tipica es conocida, utilizaremos la siguiente formula
 ## mediaSuperficie < 61 - zAlpha *(desviacionSuperficie/ sqrt(n))
 
 ## Vamos a insertar manualmente el valor de zAlpha
-## con un nivel de significaciÃ³n del 5% 
+## con un nivel de significación del 5% 
  zAlpha <- 2.49  
  ##Mostramos
  zAlpha
@@ -193,14 +195,14 @@ if(mediaSuperficie < muSubCero - parteDerecha){
  
  ## Ahora vamos a realizar otra hipotesis, en la que queremos observar
  ## De nuevo, la inmobiliaria quiere observar una serie de datos para poder
- ## publicitarse mejor, en este caso, quiere mostrar, respecto a la desviaciÃ³n tipica, que es 
+ ## publicitarse mejor, en este caso, quiere mostrar, respecto a la desviación tipica, que es 
  ## menor o igual a un determinado valor sigma0. 
  
- ## Por otro lado, el tamaÃ±o muestral sigue siendo el mismo porque se quiere 
- ## la mayor precisiÃ³n posible. Utilizaremos 20 grados de libertad y un 
- ## nivel de significaciÃ³n del 5 % 
+ ## Por otro lado, el tamaño muestral sigue siendo el mismo porque se quiere 
+ ## la mayor precisión posible. Utilizaremos 20 grados de libertad y un 
+ ## nivel de significación del 5 % 
  
- ##  Las hipotesis serÃ¡n las siguientes :
+ ##  Las hipotesis serán las siguientes :
  ## La hipotesis nula -> H0 : sigma <= sigma0 
  ## La hipotesis alternativa -> H1 : sigma > sigma0 
  
@@ -243,6 +245,6 @@ if(mediaSuperficie < muSubCero - parteDerecha){
  } else {
    print("Se acepta la hipotesis nula, por tanto la inmobiliaria tiene razon")
  } 
- ## En este caso, la inmobiliaria no tiene razon por lo que habrÃ­a que ajustar 
+ ## En este caso, la inmobiliaria no tiene razon por lo que habría que ajustar 
  ## el precio de los pisos para que la diferencia no fuera tan grande y fuera mas 
  ## igualitario 
